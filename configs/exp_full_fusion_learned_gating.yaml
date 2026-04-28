@@ -1,0 +1,5 @@
+active_modalities: [leaf, uav, satellite]
+experiment_name: full_fusion_learned_gating
+fusion_method: learned_gating
+fusion_output_dim: 512
+fusion_hidden_dim: 256

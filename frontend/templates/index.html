@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Agriculture Dashboard | Multi-Scale Fusion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="bg-atmosphere"></div>
+    <div class="bg-grid"></div>
+
+    <header class="topbar">
+        <div class="brand">Digital Agronomist</div>
+        <nav class="topnav" aria-label="Primary">
+            <a href="#" class="active">Dashboard</a>
+            <a href="#">Field History</a>
+            <a href="#">Research Hub</a>
+        </nav>
+    </header>
+
+    <main class="layout">
+        <section class="hero">
+            <p class="eyebrow">Multi-Scale Crop Intelligence</p>
+            <h1>Precision Agriculture Dashboard</h1>
+            <p class="hero-copy">
+                Fusing leaf close-ups, UAV survey imagery, and satellite context to classify crop health with explainable confidence scores.
+            </p>
+        </section>
+
+        <section class="upload-grid" aria-label="Input Modalities">
+            <article class="upload-zone" id="zone-leaf" role="button" tabindex="0" aria-label="Upload leaf image">
+                <input type="file" id="input-leaf" accept="image/*" hidden>
+                <img class="preview" id="preview-leaf" alt="Leaf preview">
+                <div class="zone-content">
+                    <span class="zone-kicker">Macro Scale</span>
+                    <h2>Leaf / Close-up</h2>
+                    <p class="zone-hint">Drag and drop or click to upload</p>
+                    <p class="zone-file" id="name-leaf">Waiting for file</p>
+                </div>
+            </article>
+
+            <article class="upload-zone" id="zone-uav" role="button" tabindex="0" aria-label="Upload UAV image">
+                <input type="file" id="input-uav" accept="image/*" hidden>
+                <img class="preview" id="preview-uav" alt="UAV preview">
+                <div class="zone-content">
+                    <span class="zone-kicker">Meso Scale</span>
+                    <h2>UAV / Aerial</h2>
+                    <p class="zone-hint">Drag and drop or click to upload</p>
+                    <p class="zone-file" id="name-uav">Waiting for file</p>
+                </div>
+            </article>
+
+            <article class="upload-zone" id="zone-satellite" role="button" tabindex="0" aria-label="Upload satellite image">
+                <input type="file" id="input-satellite" accept="image/*" hidden>
+                <img class="preview" id="preview-satellite" alt="Satellite preview">
+                <div class="zone-content">
+                    <span class="zone-kicker">Global Scale</span>
+                    <h2>Satellite</h2>
+                    <p class="zone-hint">Drag and drop or click to upload</p>
+                    <p class="zone-file" id="name-satellite">Waiting for file</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="actions">
+            <button id="analyze-btn" disabled>
+                <span class="btn-text">Analyze Crop Health</span>
+                <span class="spinner" style="display:none;" aria-hidden="true"></span>
+            </button>
+            <p id="error-msg" class="error-msg" role="alert"></p>
+        </section>
+
+        <section class="results-wrap">
+            <div id="results-panel" class="results-panel hidden">
+                <h3>Neural Classification Output</h3>
+                <div class="prediction-large" id="pred-label">--</div>
+                <div class="confidence">Confidence: <span id="conf-val">0</span>%</div>
+
+                <div class="prob-bars">
+                    <div class="prob-item">
+                        <span class="prob-label">Healthy</span>
+                        <div class="prob-track">
+                            <div class="prob-fill bg-green" id="bar-healthy"></div>
+                        </div>
+                        <span class="prob-val" id="val-healthy">0%</span>
+                    </div>
+                    <div class="prob-item">
+                        <span class="prob-label">Stressed</span>
+                        <div class="prob-track">
+                            <div class="prob-fill bg-amber" id="bar-stressed"></div>
+                        </div>
+                        <span class="prob-val" id="val-stressed">0%</span>
+                    </div>
+                    <div class="prob-item">
+                        <span class="prob-label">Diseased</span>
+                        <div class="prob-track">
+                            <div class="prob-fill bg-red" id="bar-diseased"></div>
+                        </div>
+                        <span class="prob-val" id="val-diseased">0%</span>
+                    </div>
+                </div>
+                <p class="footnote">Powered by multi-scale fusion: leaf + UAV + satellite.</p>
+            </div>
+
+            <aside class="meta-panel">
+                <div class="meta-card">
+                    <p class="meta-label">Moisture Index</p>
+                    <p class="meta-value" id="meta-moisture">Pending</p>
+                </div>
+                <div class="meta-card">
+                    <p class="meta-label">Intervention Priority</p>
+                    <p class="meta-value" id="meta-priority">Pending</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

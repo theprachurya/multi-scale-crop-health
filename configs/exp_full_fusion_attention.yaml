@@ -1,0 +1,4 @@
+active_modalities: [leaf, uav, satellite]
+experiment_name: full_fusion_attention
+fusion_method: attention
+fusion_output_dim: 512

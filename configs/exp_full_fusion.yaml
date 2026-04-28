@@ -1,0 +1,2 @@
+active_modalities: [leaf, uav, satellite]
+experiment_name: full_fusion

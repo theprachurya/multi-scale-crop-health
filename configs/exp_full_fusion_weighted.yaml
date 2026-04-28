@@ -1,0 +1,5 @@
+active_modalities: [leaf, uav, satellite]
+experiment_name: full_fusion_weighted
+fusion_method: scalar_weighted
+consistency_lambda: 0.2
+consistency_temperature: 2.0

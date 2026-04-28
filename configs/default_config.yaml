@@ -1,0 +1,32 @@
+# Training
+epochs: 12
+batch_size: 8
+backbone_lr: 0.0001
+head_lr: 0.001
+weight_decay: 0.0001
+early_stopping_patience: 10
+gradient_clip_norm: 1.0
+dropout_rate: 0.5
+label_smoothing: 0.1
+seed: 42
+
+# Architecture
+freeze_backbones: true
+fusion_method: concat  # concat | attention | learned_gating | scalar_weighted
+fusion_output_dim: 512
+fusion_hidden_dim: 256
+
+# Cross-scale regularization
+consistency_lambda: 0.2
+consistency_temperature: 2.0
+
+# Data
+train_csv: data/triplets/train_triplets.csv
+val_csv: data/triplets/val_triplets.csv
+test_csv: data/triplets/test_triplets.csv
+num_workers: 0
+
+# Output
+output_dir: outputs/
+log_dir: outputs/metrics/
+checkpoint_dir: outputs/checkpoints/

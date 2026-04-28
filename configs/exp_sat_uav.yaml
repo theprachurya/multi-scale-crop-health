@@ -1,0 +1,2 @@
+active_modalities: [satellite, uav]
+experiment_name: sat_uav
